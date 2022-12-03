@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<title>MyTask 1</title>
+<head>
+</head>
+<body>
+<label>JSON INPUT</label></br>
+<textarea placeholder="Json Data" id="jsonTxt"></textarea></br>
+<input type="button" value="Generate" id="genButton"></button></br>
+<label>HTML OUTPUT</label></br>
+<textarea placeholder="Html Output" id="htmlTxt"></textarea>
+<script>
+var txtValue = document.getElementById("jsonTxt");
+var butJson = document.getElementById("genButton");
+var htmlValues = document.getElementById("htmlTxt");
+
+function createJson() {
+    var myJson = JSON.parse(txtValue.value);
+
+
+    var crJs = "";
+    if(myJson.length!=0 || myJson!=undefined && myJson !=null){
+        for(var ints=0;ints<myJson.length;ints++){
+        console.log(ints);
+       crJs +=' <div class="root" data-id="'+myJson[ints].id+'"><span class="username">'+myJson[ints].userName+'</span><span class="video_name">'+myJson[ints].video_name+'</span><span class="additional_details"><span class="type">'+myJson[ints].action+'</span></span></div>';
+    }
+        htmlValues.value = crJs;
+    }
+
+   
+    console.log(myJson)
+}
+
+butJson.addEventListener('click', createJson);
+</script>
+</body>
+</html>
